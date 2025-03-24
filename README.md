@@ -1,5 +1,5 @@
 # OryxEngine.Optionals
- A basic union impl in C# for Oryx Engine
+ A basic result type impl in C# for Oryx Engine
 
 ```csharp
     public static void Main(string[] args)
@@ -26,11 +26,11 @@
         {
             //For this example pretend we can't do anything
             //about this exception as it happens in a class we cannot modify 
-            return args[index];
+            return args[index]; //Implicit conversion to Option<string>.Value
         }
         catch (Exception e)
         {
-            return e;
+            return e; //Implicit conversion to Option<string>.Error
         }
     }
 ```
