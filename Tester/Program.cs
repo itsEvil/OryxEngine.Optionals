@@ -20,7 +20,7 @@ public static class Program
     {
         Console.WriteLine("Success: {0}", obj);
     }
-    private static void OnFailure(Error? obj)
+    private static void OnFailure(Error obj)
     {
         Console.WriteLine("Error occured: {0}", obj);
     }
