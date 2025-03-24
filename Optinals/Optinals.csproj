@@ -5,6 +5,20 @@
         <LangVersion>13</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Title>Result Type in C#</Title>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>A basic result type impl in c# for Oryx Engine</Description>
+        <PackageProjectUrl>https://github.com/itsEvil/OryxEngine.Optionals</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/itsEvil/OryxEngine.Optionals</RepositoryUrl>
+        <PackageTags>Union, Result, Type, Oryx Engine</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>OryxEngine.Optionals</PackageId>
+        <Authors>itsEvil</Authors>
     </PropertyGroup>
-
+    
+    <ItemGroup>
+        <None Include="$(MSBuildProjectDirectory)\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+    
 </Project>
