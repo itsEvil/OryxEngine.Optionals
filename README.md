@@ -34,3 +34,4 @@
         }
     }
 ```
+Nuget Link: https://www.nuget.org/packages/OryxEngine.Optionals/1.0.0
