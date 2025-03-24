@@ -15,6 +15,12 @@ public static class Program
             var result = TryGetValue(arr, i);
             result.Handle(OnSuccess, OnFailure);
         }
+
+        var resultTwo = TryGetValue(arr, 1);
+        if (resultTwo.IsSuccess)
+        {
+            Console.WriteLine(resultTwo.Value);
+        }
     }
     private static void OnSuccess(string obj)
     {

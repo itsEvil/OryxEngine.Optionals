@@ -15,6 +15,8 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>OryxEngine.Optionals</PackageId>
         <Authors>itsEvil</Authors>
+        <Version>1.1.0</Version>
+        <PackageReleaseNotes>Made Option *.IsSuccess *.Value *.Error public for more flexible usage</PackageReleaseNotes>
     </PropertyGroup>
     
     <ItemGroup>

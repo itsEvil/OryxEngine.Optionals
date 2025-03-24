@@ -4,20 +4,23 @@
 namespace OryxEngine.Optionals;
 public readonly struct Option<T>
 {
-    private readonly bool _isSuccess;
-    private readonly Error _error;
-    private readonly T _value;
+    // ReSharper disable once MemberCanBePrivate.Global
+    public readonly bool IsSuccess;
+    // ReSharper disable once MemberCanBePrivate.Global
+    public readonly Error Error;
+    // ReSharper disable once MemberCanBePrivate.Global
+    public readonly T Value;
     private Option(ErrorDetailed e)
     {
-        _isSuccess = false;
-        _error = e;
-        _value = default!;
+        IsSuccess = false;
+        Error = e;
+        Value = default!;
     }
     private Option(T value)
     {
-        _isSuccess = true;
-        _value = value;
-        _error = Error.Empty;
+        IsSuccess = true;
+        Value = value;
+        Error = Error.Empty;
     }
 
     public static implicit operator Option<T>(Exception e) => new(e);
@@ -25,58 +28,58 @@ public readonly struct Option<T>
     public static implicit operator Option<T>(T value) => new(value);
     public void Handle(Action<T>? success = null, Action<Error>? failure = null)
     {
-        switch (_isSuccess) 
+        switch (IsSuccess) 
         {
             case true:
-                success?.Invoke(_value);
+                success?.Invoke(Value);
                 return;
             default:
-                failure?.Invoke(_error);
+                failure?.Invoke(Error);
                 return;
         }
     }
     
     public void HandleSuccess(Action<T>? success = null) {
-        if(!_isSuccess)
+        if(!IsSuccess)
             return;
         
-        success?.Invoke(_value);
+        success?.Invoke(Value);
     }
 
     public void HandleFailure(Action<Error>? failure = null) {
-        if(_isSuccess)
+        if(IsSuccess)
             return;
         
-        failure?.Invoke(_error);
+        failure?.Invoke(Error);
     }
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void HandleInline(Action<T>? success = null, Action<Error>? failure = null)
     {
-        switch (_isSuccess) 
+        switch (IsSuccess) 
         {
             case true:
-                success?.Invoke(_value);
+                success?.Invoke(Value);
                 return;
             default:
-                failure?.Invoke(_error);
+                failure?.Invoke(Error);
                 return;
         }
     }
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void HandleSuccessInline(Action<T>? success = null) {
-        if(!_isSuccess)
+        if(!IsSuccess)
             return;
         
-        success?.Invoke(_value);
+        success?.Invoke(Value);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void HandleFailureInline(Action<Error>? failure = null) {
-        if(_isSuccess)
+        if(IsSuccess)
             return;
         
-        failure?.Invoke(_error);
+        failure?.Invoke(Error);
     }
 }
